@@ -523,6 +523,13 @@ module Crypto
       proof.to_s
     end
 
+    def combine_public_keys(point_hex_1, point_hex_2)
+      point_1 = hex_to_point(point_hex_1)
+      point_2 = hex_to_point(point_hex_2)
+
+      point_sum = add_points(point_1, point_2)
+      point_to_hex(point_sum)
+    end
 
   end
 end
