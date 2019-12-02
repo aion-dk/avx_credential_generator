@@ -26,9 +26,7 @@ module AVXCredentialGenerator
       pk_absolute_path = absolute_output_path("#{basename}_public_keys.csv")
       write_csv(pk_absolute_path, headers_plus_public_key, rows_plus_public_keys)
 
-      $stdout.puts 'Outputted files:'
-      $stdout.puts ec_absolute_path
-      $stdout.puts pk_absolute_path
+      say("Done! Outputted files:\n#{ec_absolute_path}\n#{pk_absolute_path}")
     end
 
 
