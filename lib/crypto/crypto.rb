@@ -4,7 +4,7 @@ require 'securerandom'
 module Crypto
 
   CURVE = OpenSSL::PKey::EC.new('secp256k1')
-  ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz'.split('')
+  ALPHABET = '2346789ABCDEFGHJKLMNPQRTUVWXYZabcdefghijkmnpqrstuvwxyz'.split('')
   ELECTION_CODE_LENGTH = 14
 
   class << self
