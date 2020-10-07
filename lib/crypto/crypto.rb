@@ -66,6 +66,14 @@ module Crypto
       bn_to_hex(private_key)
     end
 
+    def election_code_to_public_key(election_code)
+      hash = Digest::SHA256.hexdigest(election_code)
+      private_key = hex_to_bn(hash) % CURVE.group.order
+      public_key = CURVE.group.generator.mul(private_key)
+
+      point_to_hex(public_key)
+    end
+
     # Adds public keys together
     # Used for computing the encryption key out of all trustee public keys
     #
