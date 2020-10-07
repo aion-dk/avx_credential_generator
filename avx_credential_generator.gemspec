@@ -14,6 +14,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'thor', '~> 0.20.3'
-  spec.add_dependency 'charlock_holmes', '~> 0.7.6'
-  spec.add_dependency 'activesupport', '~> 5.2.1'
+  # spec.add_dependency 'charlock_holmes', '~> 0.7.6'
+  # spec.add_dependency 'activesupport', '~> 5.2.1'
 end

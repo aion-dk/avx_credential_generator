@@ -43,6 +43,7 @@ module AVXCredentialGenerator
       headers, *rows = read_csv(path)
 
       election_codes = []
+      index = nil
       loop do
         index = ask_header_index(headers, 'What column to use as election codes?')
         column = rows.map{ |row| row[index] }
@@ -73,8 +74,15 @@ module AVXCredentialGenerator
 
       public_keys = election_codes.map{ |ec| Crypto.election_code_to_public_key(ec) }
 
-      # generate public keys file
-      rows_plus_public_keys = rows.zip(public_keys).map{ |row, public_key| row + [public_key] }
+      # Remove the private key column
+      rows_without_election_code = rows.map do |row|
+        row.delete_at(index)
+        row
+      end
+      headers.delete_at(index)
+
+
+      rows_plus_public_keys = rows_without_election_code.zip(public_keys).map{ |row, public_key| row + [public_key] }
       headers_plus_public_key = headers + ['Public key']
 
       pk_absolute_path = ask_output_path('.csv', 'public_keys', 'Pick a name for the public keys file')

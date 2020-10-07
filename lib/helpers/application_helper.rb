@@ -1,5 +1,5 @@
 require 'csv'
-require 'charlock_holmes'
+# require 'charlock_holmes'
 
 module AVXCredentialGenerator
   module ApplicationHelper
@@ -71,8 +71,8 @@ module AVXCredentialGenerator
     # CSV Helpers
     def read_file(path)
       content = File.read(path)
-      detection = CharlockHolmes::EncodingDetector.detect(content)
-      CharlockHolmes::Converter.convert(content, detection[:encoding], 'UTF-8')
+      # detection = CharlockHolmes::EncodingDetector.detect(content)
+      # CharlockHolmes::Converter.convert(content, detection[:encoding], 'UTF-8')
     end
 
     def detect_col_sep(contents)
